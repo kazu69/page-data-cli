@@ -29,7 +29,7 @@ page --help
     $ page meta http://example.com
 ```
 
-## Related
+## package
 
 [page-data](https://www.npmjs.com/package/page-data)
 
