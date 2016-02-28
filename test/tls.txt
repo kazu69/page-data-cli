@@ -1,0 +1,3 @@
+COUNTRY (C) | STATE (ST) | LOCAL (L) | ORGANIZATION (O)                                    | ORGANIZATIONAL UNIT (OU) | COMMON NAME (CN)
+US          | California |           | Internet Corporation for Assigned Names and Numbers | Technology               | www.example.org
+US          |            |           | DigiCert Inc                                        | www.digicert.com         | DigiCert SHA2 High Assurance Server CA
