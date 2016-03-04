@@ -1,5 +1,7 @@
 # page-data-cli
 
+[![Build Status](https://travis-ci.org/kazu69/page-data-cli.svg?branch=master)](https://travis-ci.org/kazu69/page-data-cli)
+
 [page-data](https://www.npmjs.com/package/page-data) command-line tools.
 
 ## install
