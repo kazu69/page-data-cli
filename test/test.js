@@ -2,7 +2,6 @@ import test from 'ava';
 import execa from 'execa';
 import fs from 'fs';
 import readline from 'readline';
-// import page from 'page-data';
 
 test('.status()', async t => {
     let result = await execa.shell('node ../cli.js status http://example.com');
