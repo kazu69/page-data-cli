@@ -1,6 +1,6 @@
 {
   "name": "page-data-cli",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "simple page data get client tool cli",
   "main": "cli.js",
   "scripts": {
