@@ -56,6 +56,6 @@
     "meow": "^3.7.0",
     "moment": "^2.11.2",
     "object-assign": "^4.0.1",
-    "page-data": "0.0.5"
+    "page-data": "0.0.6"
   }
 }
