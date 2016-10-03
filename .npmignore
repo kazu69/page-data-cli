@@ -1,0 +1,7 @@
+.travis.yml
+.eslintignore
+.gitignore
+.eslintrc
+.git/
+.nyc_outpu
+.npmignore
