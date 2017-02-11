@@ -1,11 +1,11 @@
 {
   "name": "page-data-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "simple page data get client tool cli",
   "main": "cli.js",
   "scripts": {
     "lint": "eslint **/*.js",
-    "test": "$(npm bin)/nyc ava test/*.js"
+    "test": "nyc ava test/*.js"
   },
   "keywords": [
     "website",
