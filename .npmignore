@@ -3,5 +3,7 @@
 .gitignore
 .eslintrc
 .git/
-.nyc_outpu
+.nyc_output
 .npmignore
+node_modules
+coverage
