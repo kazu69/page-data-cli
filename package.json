@@ -43,7 +43,7 @@
   "homepage": "https://github.com/kazu69/page-data-cli#readme",
   "devDependencies": {
     "ava": "git://github.com/sindresorhus/ava.git",
-    "babel-eslint": "^7.1.1",
+    "babel-eslint": "^7.2.0",
     "eslint": "^3.17.0",
     "execa": "^0.6.2",
     "nyc": "^10.1.2",
