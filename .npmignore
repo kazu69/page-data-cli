@@ -3,6 +3,7 @@
 .gitignore
 .eslintrc
 .git/
+.github/
 .nyc_output
 .npmignore
 node_modules
