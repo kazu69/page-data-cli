@@ -1,6 +1,6 @@
 {
   "name": "page-data-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "simple page data get client tool cli",
   "main": "cli.js",
   "scripts": {
@@ -56,6 +56,6 @@
     "meow": "^3.7.0",
     "moment": "^2.18.0",
     "object-assign": "^4.1.1",
-    "page-data": "0.0.8"
+    "page-data": "^0.0.11"
   }
 }
