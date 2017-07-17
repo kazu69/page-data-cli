@@ -36,7 +36,7 @@ test.cb('.tls()', t => {
   });
 
   const readStdOut = new Promise((resolve, reject) => {
-    execa.shell('node cli.js tls https://example.com').then(res => {
+    execa.shell('node cli.js tls https://example.com -n=example.com').then(res => {
       result = res
       resolve(res);
     })

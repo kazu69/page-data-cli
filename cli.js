@@ -11,21 +11,30 @@ const page = require('page-data'),
 
 const cli = meow(`
     Usage
-      $ page <command> <url>
+      $ page <command> <url> <options>
 
     Command
       status  - page http GET response
       tls     - tls information (subject, issuer, valid term)
       meta    - meta information ( title, keyword, description )
 
+    tls Options
+      --servername -n, Servername
+
     Examples
       $ page state http:\/\/example.com
       $ page tls https:\/\/example.com
       $ page meta http:\/\/example.com
-`);
+`, {
+  alias: {
+    n: 'servername'
+  }
+});
 
 const command = cli.input[0],
       url = cli.input[1];
+
+console.log(cli.flags)
 
 if (cli.input.length === 0) {
   console.error(logSymbols.error, chalk.red('Input required'));
@@ -128,7 +137,11 @@ switch(command) {
     break;
 
   case 'tls':
-    page.tls(url)
+    let options = {}
+    if (cli.flags['servername']) {
+      options['servername'] = cli.flags['servername']
+    }
+    page.tls(url, options)
     .then(data => {
       tlsStout(data);
     })
