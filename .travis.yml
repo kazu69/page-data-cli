@@ -5,9 +5,8 @@ node_js:
   - '5'
   - '4'
 install:
-  - npm install -g yarn
-  - yarn install
+  - npm install -g npm
+  - npm install
 cache:
-  yarn: true
   directories:
     - node_modules
