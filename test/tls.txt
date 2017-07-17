@@ -1,3 +1,5 @@
 COUNTRY (C) | STATE (ST) | LOCAL (L) | ORGANIZATION (O)                                    | ORGANIZATIONAL UNIT (OU) | COMMON NAME (CN)
 US          | California |           | Internet Corporation for Assigned Names and Numbers | Technology               | www.example.org
 US          |            |           | DigiCert Inc                                        | www.digicert.com         | DigiCert SHA2 High Assurance Server CA
+valid term: 2015/11/03 ~ 2018/11/28
+Subject Alt Name(SAN): www.example.org, example.com, example.edu, example.net, example.org, www.example.com, www.example.edu, www.example.net

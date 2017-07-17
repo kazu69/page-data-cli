@@ -88,8 +88,9 @@ function tlsStout(data) {
     ]
   }
   const table = columnify(value, columns);
-  const validDate = `[ valid term: ${valid_from} ~ ${valid_to} ]`;
-  const output = `${table}\n${validDate}`;
+  const validDate = `valid term: ${valid_from} ~ ${valid_to}`;
+  const san = `Subject Alt Name(SAN): ${data.subjectaltname.join(',')}`;
+  const output = `${table}\n${validDate}\n${san}`;
 
   console.info(output);
   process.exit(0);
