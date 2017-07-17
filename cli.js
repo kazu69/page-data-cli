@@ -34,8 +34,6 @@ const cli = meow(`
 const command = cli.input[0],
       url = cli.input[1];
 
-console.log(cli.flags)
-
 if (cli.input.length === 0) {
   console.error(logSymbols.error, chalk.red('Input required'));
   process.exit(1);
