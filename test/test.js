@@ -11,20 +11,70 @@ test('.status()', async t => {
     t.true(result.stdout.includes('GET: https://example.com/ - 200: OK'));
 });
 
-test('.tls()', async t => {
+test.cb('.tls()', t => {
   const readStream = fs.createReadStream(__dirname + '/tls.txt', 'utf8');
-  const readLine = readline.createInterface(readStream, {});
-  const result = await execa.shell('node cli.js tls https://example.com');
-  readLine.on('line', (line) => {
-    t.true(result.stdout.includes(line));
+  const sans = [
+    'www.example.org',
+    'example.com',
+    'example.edu',
+    'example.net',
+    'example.org',
+    'www.example.com',
+    'www.example.edu',
+    'www.example.net'
+    ];
+    const sansResult = `Subject Alt Name(SAN): ${sans.join(', ')}`
+
+  let lines = [],
+      result;
+
+  const readFIle = new Promise((resolve, reject) => {
+    readline.createInterface(readStream, {}).on('line', line => {
+      lines.push(line)
+    });
+    resolve(lines);
+  });
+
+  const readStdOut = new Promise((resolve, reject) => {
+    execa.shell('node cli.js tls https://example.com').then(res => {
+      result = res
+      resolve(res);
+    })
+  });
+
+  Promise.all([readFIle, readStdOut]).then(() => {
+    lines.map(line => {
+      t.true(result.stdout.includes(line));
+    });
+    t.true(result.stdout.includes(sansResult));
+    t.end();
   });
 });
 
-test('.meta()', async t => {
+test.cb('.meta()', t => {
   const readStream = fs.createReadStream(__dirname + '/meta.txt', 'utf8');
-  const readLine = readline.createInterface(readStream, {});
-  const result = await execa.shell('node cli.js meta http://example.com');
-  readLine.on('line', (line) => {
-    t.true(result.stdout.includes(line));
+  let lines = [],
+      result;
+
+  const readFIle = new Promise((resolve, reject) => {
+    readline.createInterface(readStream, {}).on('line', line => {
+      lines.push(line);
+    });
+    resolve(lines);
   });
+
+  const readStdOut = new Promise((resolve, reject) => {
+    execa.shell('node cli.js meta http://example.com').then(res => {
+      result = res;
+      resolve(res);
+    });
+  });
+
+  Promise.all([readFIle, readStdOut]).then( () => {
+    lines.map(line => {
+      t.true(result.stdout.includes(line));
+    });
+    t.end();
+  });
+
 });
