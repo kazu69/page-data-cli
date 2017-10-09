@@ -15,15 +15,19 @@ npm install --global page-data-cli
 ```sh
 page --help
 
-  simple page data get client tool cli
+   simple page data get client tool cli
 
   Usage
-    $ page <command> <url>
+    $ page <command> <url> <options>
 
   Command
     status  - page http GET response
     tls     - tls information (subject, issuer, valid term)
     meta    - meta information ( title, keyword, description )
+
+  tls Options
+    --servername -n, Servername
+    --insecure -k, Not reject unauthorized
 
   Examples
     $ page state http://example.com
