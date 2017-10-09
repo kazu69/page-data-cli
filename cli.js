@@ -100,7 +100,7 @@ function tlsStout(data) {
   const table = columnify(value, columns);
   const ocsp = `OCSP: ${infoAccess['OCSP - URI']}`;
   const caIssuer = `CA Issuers: ${infoAccess['CA Issuers - URI']}`;
-  const validDate = `Valid term: ${valid_from} - ${valid_to}`;
+  const validDate = `Valid term: ${valid_from} ~ ${valid_to}`;
   const san = `Subject Alt Name(SAN): ${data.subjectaltname.join(',')}`;
   const output = `${table}\n${ocsp}\n${caIssuer}\n${validDate}\n${san}`;
 
