@@ -20,6 +20,7 @@ const cli = meow(`
 
     tls Options
       --servername -n, Servername
+      --insecure -k, Not reject unauthorized
 
     Examples
       $ page state http:\/\/example.com
@@ -27,7 +28,8 @@ const cli = meow(`
       $ page meta http:\/\/example.com
 `, {
   alias: {
-    n: 'servername'
+    n: 'servername',
+    k: 'insecure',
   }
 });
 
@@ -64,8 +66,9 @@ function getCsrBase() {
 function tlsStout(data) {
   const subject = objectAssign(getCsrBase(), data.subject),
         issuer = objectAssign(getCsrBase(), data.issuer),
-        valid_from = moment(new Date(data.valid_from)).format('YYYY/MM/DD'),
-        valid_to = moment(new Date(data.valid_to)).format('YYYY/MM/DD');
+        infoAccess =  data.infoAccess,
+        valid_from = moment(new Date(data.valid_from)).format('YYYY/MM/DD HH:mm:ss'),
+        valid_to = moment(new Date(data.valid_to)).format('YYYY/MM/DD HH:mm:ss');
 
   let value = [];
 
@@ -95,9 +98,11 @@ function tlsStout(data) {
     ]
   }
   const table = columnify(value, columns);
-  const validDate = `valid term: ${valid_from} ~ ${valid_to}`;
+  const ocsp = `OCSP: ${infoAccess['OCSP - URI']}`;
+  const caIssuer = `CA Issuers: ${infoAccess['CA Issuers - URI']}`;
+  const validDate = `Valid term: ${valid_from} - ${valid_to}`;
   const san = `Subject Alt Name(SAN): ${data.subjectaltname.join(',')}`;
-  const output = `${table}\n${validDate}\n${san}`;
+  const output = `${table}\n${ocsp}\n${caIssuer}\n${validDate}\n${san}`;
 
   console.info(output);
   process.exit(0);
@@ -139,6 +144,10 @@ switch(command) {
     if (cli.flags['servername']) {
       options['servername'] = cli.flags['servername']
     }
+    if (cli.flags['insecure']) {
+      options['rejectUnauthorized'] = false;
+    }
+
     page.tls(url, options)
     .then(data => {
       tlsStout(data);
